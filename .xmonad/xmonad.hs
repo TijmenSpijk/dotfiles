@@ -92,9 +92,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       -- Swap the focused window with the previous window
       ((modm .|. shiftMask, xK_k), windows W.swapUp),
       -- Shrink the master area
-      ((modm, xK_h), sendMessage Shrink),
+      -- ((modm, xK_h), sendMessage Shrink),
       -- Expand the master area
-      ((modm, xK_l), sendMessage Expand),
+      -- ((modm, xK_l), sendMessage Expand),
       -- Push window back into tiling
       ((modm, xK_t), withFocused $ windows . W.sink),
       -- Increment the number of windows in the master area
@@ -104,9 +104,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
       -- Toggle the status bar gap
       -- Use this binding with avoidStruts from Hooks.ManageDocks.
       -- See also the statusBar function from Hooks.DynamicLog.
-      --
       -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
-
+      -- Lock screen
+      ((modm, xK_l), spawn "dm-tool lock"),
       -- Quit xmonad
       ((modm .|. shiftMask, xK_o), io (exitWith ExitSuccess)),
       -- Restart xmonad
@@ -235,7 +235,7 @@ myLogHook = return ()
 -- By default, do nothing.
 myStartupHook = do
   spawnOnce "nitrogen --restore &"
-  spawnOnce "conky"
+  spawnOnce "conky &"
   spawnOnce "picom &"
 
 ------------------------------------------------------------------------
