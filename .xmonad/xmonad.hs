@@ -40,7 +40,7 @@ myNormalBorderColor :: String
 myNormalBorderColor = "#555555"
 
 myFocusedBorderColor :: String
-myFocusedBorderColor = "#ffffff"
+myFocusedBorderColor = "#eeeeee"
 
 -- myPrograms
 myTerminal :: String
