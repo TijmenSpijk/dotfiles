@@ -137,7 +137,6 @@ myLogHook = return ()
 -- Startup hook
 myStartupHook = do
   spawnOnce "nitrogen --restore &"
-  spawnOnce "conky &"
   spawnOnce "picom &"
 
 -- Main
