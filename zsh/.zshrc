@@ -109,8 +109,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
-alias lsa="ls -lhA"
-alias shutdown=poweroff
+alias ls="exa -G"
+alias lsa="exa -Glha"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
