@@ -1,0 +1,429 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+background = #002e3440
+background-alt = #3b4252
+background-module = #2e3440
+
+foreground = #eceff4
+foreground-alt = #e5e9f0
+
+black   = #3b4252
+white   = #e5e9f0
+red     = #bf616a
+green   = #a3be8c
+blue    = #5e81ac
+cyan    = #88c0d0
+yellow  = #ebcb8b
+magenta = #b48ead
+
+[bar/mybar]
+modules-right = left uptime split updates kernel split pulseaudio wireless-network cpu memory date powermenu right
+modules-center = 
+modules-left = left bspwm split window right
+
+width = 100%
+height = 34
+offset-x = 0%
+offset-y = 0%
+radius = 0.0
+line-size = 3
+fixed-center = false
+wm-restack = bspwm
+override-redirect = false
+
+foreground   = ${colors.foreground}
+background   = ${colors.background}
+border-color = ${colors.background}
+border-size  = 5
+
+cursor-click = pointer
+cursor-scroll = default
+
+; fonts
+font-0 = monospace:style=Bold:size=11;2
+font-1 = Feather:style=Bold:size=14;3
+font-2 = monospace:style=Bold:size=12;4
+font-3 = DaddyTimeMono Nerd Font:size=21;5
+
+#######################
+#     Main Module     #
+#######################
+
+[module/bspwm]
+type = internal/bspwm
+
+; ws-icon-0 = 1;
+; ws-icon-1 = 2;
+; ws-icon-2 = 3;
+; ws-icon-3 = 4;
+; ws-icon-4 = 5;
+; ws-icon-default = 
+
+label-focused = %index%
+label-focused-foreground = ${colors.white}
+label-focused-background = ${colors.background-alt}
+label-focused-underline  = ${colors.blue}
+label-focused-padding = 1
+
+label-occupied = %index%
+label-occupied-foreground = ${colors.white}
+label-occupied-background = ${colors.background-alt}
+label-occupied-padding = 1
+
+label-urgent = %index%
+label-urgent-foreground = ${colors.yellow}
+label-urgent-background = ${colors.background-alt}
+label-urgent-padding = 1
+
+label-empty = %index%
+label-empty-foreground = ${colors.white}
+label-empty-background = ${colors.background-alt}
+label-empty-padding = 1
+
+
+######################
+#   Spacer Modules   #
+######################
+
+[module/right]
+type = custom/text
+content = %{T4}%{T-}
+content-foreground = ${colors.background-alt}
+content-background = ${colors.background}
+
+[module/left]
+type = custom/text
+content = %{T4}%{T-}
+content-foreground = ${colors.background-alt}
+content-background = ${colors.background}
+
+[module/split]
+type = custom/text
+content = %{T4} %{T-}
+content-foreground = ${colors.background-alt}
+content-background = ${colors.background}
+
+######################
+#       Modules      #
+######################
+
+[module/date]
+interval = 5
+type = internal/date
+date = 
+date-alt = " %d-%m-%Y"
+time = " %H:%M"
+time-alt = " %H:%M"
+
+format-prefix = %{T4}%{T-}
+format-prefix-foreground = ${colors.blue}
+format-prefix-background = ${colors.background-alt}
+format-suffix = %{T4}%{T-}
+format-suffix-foreground = ${colors.blue}
+format-suffix-background = ${colors.background-alt}
+
+label = "%date% %time% " 
+label-foreground = ${colors.white}
+label-background = ${colors.blue}
+
+[module/cpu]
+type = internal/cpu
+interval = 7
+format-prefix = "%{A1:alacritty -e htop:}%{T5}  %{T-}%{A}"
+format-prefix-foreground = ${colors.yellow}
+format-prefix-background = ${colors.background-alt}
+label = "%{A1:alacritty -e htop:}%percentage%%%{A}"
+label-foreground = ${colors.foreground}
+label-background = ${colors.background-alt}
+
+
+[module/memory]
+type = internal/memory
+interval = 7
+format-prefix = "%{A1:alacritty -e htop:}%{T5}  %{T-}%{A}"
+format-prefix-foreground = ${colors.magenta}
+format-prefix-background = ${colors.background-alt}
+label = "%{A1:alacritty -e htop:}%gb_used% %{A}"
+label-foreground = ${colors.foreground}
+label-background = ${colors.background-alt}
+
+[module/wired-network]
+type = internal/network
+interface = eno1
+interval = 1
+
+; Connected
+label-connected = %ifname%
+label-connected-foreground = ${colors.foreground}
+label-connected-background = ${colors.background-alt}
+
+format-connected = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}<label-connected>%{A}"
+format-connected-prefix = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}  %{A}"
+format-connected-prefix-foreground = ${colors.green}
+format-connected-prefix-background = ${colors.background-alt}
+
+; Disconnected
+label-disconnected = 
+label-disconnected-foreground = ${colors.red}
+label-disconnected-background =  ${colors.background-alt}
+
+format-disconnected = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}<label-disconnected>%{A}"
+format-disconnected-prefix = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}  %{A}"
+format-disconnected-prefix-foreground = ${colors.red}
+format-disconnected-prefix-background = ${colors.background-alt}
+
+[module/wireless-network]
+type = internal/network
+interface = wlan0
+interval = 1
+
+; Connected
+label-connected = %essid%
+label-connected-foreground = ${colors.foreground}
+label-connected-background = ${colors.background-alt}
+
+format-connected = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}<label-connected>%{A}"
+format-connected-prefix = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}  %{A}"
+format-connected-prefix-foreground = ${colors.green}
+format-connected-prefix-background = ${colors.background-alt}
+
+; Disconnected
+label-disconnected = 
+label-disconnected-foreground = ${colors.red}
+label-disconnected-background =  ${colors.background-alt}
+
+format-disconnected = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}<label-disconnected>%{A}"
+format-disconnected-prefix = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}  %{A}"
+format-disconnected-prefix-foreground = ${colors.red}
+format-disconnected-prefix-background = ${colors.background-alt}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+use-ui-max = true
+
+interval = 1
+label-volume = %percentage%%
+format-volume = <label-volume>
+format-volume-prefix = " "
+format-volume-prefix-foreground = ${colors.blue}
+format-volume-background = ${colors.background-alt}
+
+label-muted = %percentage%%
+format-muted = <label-muted>
+format-muted-prefix = " "
+format-muted-prefix-foreground = ${colors.red}
+format-muted-background = ${colors.background-alt}
+
+; ramp-volume-0 = %{F#F2CDCD}0%{F-} 
+; ramp-volume-1 = %{F#F2CDCD}0%{F-} 
+; ramp-volume-2 = %{F#F2CDCD}0%{F-} 
+; ramp-volume-3 = %{F#F2CDCD}0%{F-} 
+; ramp-volume-4 = %{F#F2CDCD}0%{F-} 
+
+; ; Right and Middle click
+; click-right = pavucontrol
+; ; click-middle = 
+
+[module/uptime]
+type = custom/script
+interval = 30
+exec = uptime --pretty | sed 's/up //' | sed 's/\ years\?,/y/' | sed 's/\ weeks\?,/w/' | sed 's/\ days\?,/d/' | sed 's/\ hours\?,\?/h/' | sed 's/\ minutes\?/m/'
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.magenta}
+format-foreground = ${colors.foreground}
+format-background = ${colors.background-alt}
+
+[module/updates]
+type = custom/script
+exec = checkupdates | wc -l
+interval = 60
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.yellow}
+format-foreground = ${colors.foreground}
+format-background = ${colors.background-alt}
+click-left = ~/.scripts/update.sh
+
+[module/kernel]
+type = custom/script
+exec = uname -r
+interval = 60
+format = <label>
+format-prefix = "  "
+format-prefix-foreground = ${colors.cyan}
+format-foreground = ${colors.foreground}
+format-background = ${colors.background-alt}
+click-left = ~/.scripts/htop.sh
+
+[module/powermenu]
+type = custom/text
+content = %{T6} %{T-}
+content-foreground = ${colors.foreground}
+content-background = ${colors.background-alt}
+click-left = ~/.scripts/rofi/powermenu.sh
+
+[module/layout]
+type = custom/script
+interval = 1
+format-foreground = ${colors.foreground}
+format-background = ${colors.background-alt}
+format = "  <label> "
+exec = ~/.scripts/layouts.sh
+
+[module/window]
+type = custom/script
+exec = sh ~/.scripts/title.sh
+interval = 1
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.cyan}
+format-foreground = ${colors.foreground}
+format-background = ${colors.background-alt}
+
+######################
+#   Other Modules    #
+######################
+
+[module/alsa]
+type = internal/alsa
+master-mixer = Master
+
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+
+format-volume = <label-volume>
+label-volume = "%percentage%%"
+label-volume-foreground = ${colors.foreground}
+label-volume-background = ${colors.background-alt}
+
+format-volume-prefix = %{T5}"  "%{T-}
+format-volume-prefix-foreground = ${colors.foreground}
+format-volume-prefix-background = ${colors.background-alt}
+format-muted-prefix = %{T5}    %{T-}
+format-muted-foreground = ${colors.red}
+label-muted = muted
+
+[module/backlight]
+type = internal/backlight
+
+card = intel_backlight
+
+use-actual-brightness = true
+
+enable-scroll = true
+
+format = "<label>"
+format-prefix = "  "
+format-background = ${colors.background-alt}
+format-foreground = ${colors.orange}
+label =  "%percentage%%"
+label-foreground = ${colors.foreground}
+label-background = ${colors.background-alt}
+
+
+
+ramp-0 = %{F#F8BD96}0%{F-} 
+ramp-1 = %{F#F8BD96}0%{F-} 
+ramp-2 = %{F#F8BD96}0%{F-} 
+ramp-3 = %{F#F8BD96}0%{F-} 
+ramp-4 = %{F#F8BD96}0%{F-} 
+
+[module/battery]
+type = internal/battery
+label-charging = "%percentage%%  "
+label-charging-background = ${colors.background-alt}
+label-charging-foreground = ${colors.foreground}
+label-discharging-background = ${colors.background-alt}
+label-discharging-foreground = ${colors.foreground}
+label-discharging = "%percentage%%  "
+
+label-full = "  "
+label-full-background = ${colors.background-alt}
+label-full-foreground = ${colors.foreground}
+format-full-prefix = %{T3}%{T-}
+format-full-prefix-foreground = ${colors.green}
+format-full-prefix-background = ${colors.background-alt}
+
+format-charging = " <label-charging>"
+format-charging-foreground = ${colors.green}
+format-charging-background = ${colors.background-alt}
+format-discharging = "<ramp-capacity> <label-discharging>"
+format-discharging-foreground = ${colors.green}
+format-discharging-background = ${colors.background-alt}
+
+
+ramp-capacity-0 = %{T3} %{T-}
+ramp-capacity-1 = %{T3} %{T-}
+ramp-capacity-2 = %{T3} %{T-}
+ramp-capacity-3 = %{T3} %{T-}
+ramp-capacity-4 = %{T3} %{T-}
+
+full-at = 99
+
+battery = BAT0
+adapter = ADP1
+
+poll-interval = 5
+
+[module/now-playing]
+type = custom/script
+tail = true
+format-prefix = %{T5}" "%{T-}
+format-prefix-background = ${colors.background-alt}
+format-prefix-foreground = ${colors.foreground}
+format = <label>
+format-background = ${colors.background-alt}
+exec = ${HOME}/.scripts/Polybar/now-playing/playing-zscroll.sh
+
+click-left = ~/.scripts/playerctl.sh togg && notify-send -u low -i ~/.icons/Sai-i3/Music.png "$(playerctl status)"
+scroll-up = ~/.scripts/playerctl.sh next
+scroll-down = ~/.scripts/playerctl.sh prev
+click-right = killall vlc
+
+[module/mpd]
+type = internal/mpd
+
+host = 127.0.0.1
+port = 6600
+format-online = %{A3:urxvt -e ncmpcpp:}%{A1:killall mpd && ~/.config/polybar/launch-round.sh:}<label-song>%{A-, A-}%{T4}%{B#95cbf9}%{F#1d1d26}%{F-, B-, T-}%{B#96CDFB}%{F#1E1D2F} <icon-prev> <toggle> <icon-next> %{B-, F-}
+format-online-background = ${colors.background-alt}
+format-online-foreground = ${colors.foreground}
+label-song = %{T5}%{F#96CDFB}%{T-, F-} %title%
+format-offline = %{A1:mpd:}  <label-offline> %{A-}%{T4}%{B#00000000}%{F#1e1e28}%{B-, T-, F-}
+format-offline-background = ${colors.background-alt}
+format-offline-foreground = ${colors.accent}
+label-offline = offline
+interval = 1
+
+icon-play = 契
+icon-pause = 
+icon-stop = ⏹
+icon-prev = 玲
+icon-next = 怜 %{T4}%{B#00000000}%{F#94caf7}%{T-, B-, F-}
+
+[module/arch]
+type = custom/text
+content = %{T1} %{T-}%{T6} %{T-}%{T2} %{T-}
+click-left = urxvt
+click-right = urxvt -e ranger
+content-background = ${colors.accent}
+content-foreground = ${colors.background}

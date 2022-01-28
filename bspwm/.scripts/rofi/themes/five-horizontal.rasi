@@ -1,0 +1,105 @@
+@import "colors.rasi"
+
+* {
+  /* General */
+  text-font:                            "monospace 15";
+  icon-font:                            "feather 20";
+  
+  option-6-listview-spacing:            0px;
+  menu-window-padding:                  0px 0px;
+  menu-element-padding:                 10px 10px 10px 10px;
+}
+
+#window {
+  width: 201px;
+  height: 45px;
+  anchor: north;
+  location: north;
+  x-offset: 855px;
+  y-offset: 48px;
+  border: 0px;
+  border-radius: 7px;
+  border-color: @ac;
+}
+
+* {
+  background-color: @bg;
+  text-color: @white;
+  font: @icon-font;
+}
+
+#horibox {
+  children: [ listview ];
+}
+
+#listview {
+  layout: horizontal;
+}
+
+#element {
+  border: 0px;
+  padding: @option-element-padding;
+  background-color: @background-light;
+  border-radius: 7px;
+}
+
+#element.selected {
+  background-color: @ac;
+  text-color: @white;
+}
+
+* {
+  font: @text-font;
+}
+
+#window {
+  padding: @menu-window-padding;
+  children: [ inputbar, horibox ];
+}
+
+#inputbar {
+  enabled: false;
+  children: [ textbox-prompt-colon, prompt ];
+  margin: @menu-inputbar-margin;
+}
+
+#listview {
+  spacing: @option-6-listview-spacing;
+  lines: 6;
+}
+
+#element {
+  font: @icon-font;
+  border: @menu-element-border;
+  padding: @menu-element-padding;
+  border-color: @bg;
+}
+
+#element.selected {
+  border-color: @ac;
+  text-color: @white;
+}
+
+element.active,
+element.selected.urgent {
+  background-color: @red;
+  text-color: @white;
+  border-color: @red;
+}
+
+element.selected.urgent {
+  background-color: @ac;
+  border-color: @ac;
+}
+
+element.urgent,
+element.selected.active {
+  background-color: @off;
+  text-color: @white;
+  border-color: @off;
+}
+
+element.selected.active {
+  background-color: @ac;
+  border-color: @ac;
+}
