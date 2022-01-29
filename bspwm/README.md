@@ -9,6 +9,9 @@ This is heavily inspired on https://www.reddit.com/r/unixporn/comments/s7559w/bs
 - Git
 - Lxappearance
     - Nordic-Darker (AUR)
+- Lxsession
+- Nitrogen
+    - Nord-Wallpapers (AUR)
 - Picom
     - Johnaburg Fork (AUR)
 - Polybar

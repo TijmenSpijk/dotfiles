@@ -12,7 +12,7 @@ super + Return
 
 # launch (file)browser
 super + {b,e}
-	{firefox,alacritty -e ranger}
+	{firefox,thunar}
 
 super + shift + Escape
 	~/.scripts/rofi/powermenu.sh
