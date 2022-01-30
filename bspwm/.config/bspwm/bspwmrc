@@ -2,8 +2,8 @@
 
 $HOME/.config/polybar/launch-round.sh
 nitrogen --restore &
+redshift &
 picom --experimental-backend &
-#redshift &
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 bspc monitor -d 1 2 3 4 5 6
