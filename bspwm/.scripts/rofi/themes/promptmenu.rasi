@@ -2,113 +2,62 @@
 
 * {
   /* General */
-  text-font:                            "DaddyTimeMono Nerd Font 13";
-  icon-font:                            "feather 5";
-  text-font-2:				"DaddyTimeMono Nerd Font 20";
-
-  option-6-listview-spacing:            0px;
+  text-font:   "monospace 16";
+  title-font: "monospace 20";
 
   // top right bottom left
-  menu-window-padding:                  6px 6px 6px 20px;
-  menu-prompt-padding:                  0px 20px 10px 0px;
-  menu-prompt-margin:                   20px;
-  menu-element-border:                  0px 10px 0px 10px;
-  menu-element-padding:                 10px 20px 10px 4px;
-}
-
-#window {
-  width: 16%;
-  height: 18%;
-  location: center;
-  border: 0px;
+  menu-window-padding:                  5px 5px 5px 5px;
+  menu-prompt-padding:                  10px 0px 20px 10px;
+  menu-prompt-margin:                   0px;
+  menu-element-border:                  5px 5px 5px 5px;
+  menu-element-padding:                 0px 0px 0px 0px;
 }
 
 * {
   background-color: @bg;
-  text-color: @fg;
-  font: @icon-font;
-}
-
-#horibox {
-  children: [ listview ];
-}
-
-#listview {
-  layout: horizontal;
-}
-
-#element {
-  border: 0px;
-  padding: @some-element-padding;
-  background-color: @bg;
-  border-radius: 7px;
-}
-
-#element.selected {
-  background-color: @ac;
-  text-color: @bg;
-}
-
-* {
   font: @text-font;
   location: center;
 }
 
-#window {
+window {
+  width: 180px;
+  height: 130px;
+  location: center;
   padding: @menu-window-padding;
   children: [ inputbar, horibox ];
 }
 
-#inputbar {
+inputbar {
   children: [ prompt ];
   margin: @menu-inputbar-margin;
 }
 
-#listview {
-  spacing: @option-6-listview-spacing;
-  lines: 2;
-}
-
 prompt {
   padding: @menu-prompt-padding;
-}
-
-#prompt {
   margin: @menu-prompt-margin;
-  background-color: @bg;
-  text-color: @ac;
-  font: @text-font-2;
+  font: @title-font;
+  text-color: @red;
 }
 
-#element {
-  font: @icon-font;
-  border: @menu-element-border;
-  padding: @menu-element-padding;
-  border-color: @bg;
+horibox {
+  orientation: horizontal;
+  children: [ listview ];
 }
 
-#element.selected {
-  border-color: @ac;
+listview {
+  layout: horizontal;
+  spacing: 0px;
+  lines: 6;
 }
 
-element.active,
-element.selected.urgent {
-  background-color: @on;
-  text-color: @bg;
-  border-color: @on;
+element {
+  margin: 0px 0px 0px 35px;
 }
 
-element.selected.urgent {
-  border-color: @ac;
+element-text {
+  text-color: @white;
 }
 
-element.urgent,
-element.selected.active {
-  background-color: @off;
-  text-color: @bg;
-  border-color: @off;
-}
-
-element.selected.active {
-  border-color: @ac;
+element-text.selected {
+  text-color: @red;
 }

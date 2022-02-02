@@ -17,24 +17,24 @@ MENU="$(printf "${A}\n${B}\n${C}\n${D}\n${E}\n" | ${ROFI} -dmenu -selected-row 2
 
 case "$MENU" in
     "$A") exec "${HOME}/.scripts/rofi/promptmenu.sh" \
-              --yes-command "${SEATCTL} poweroff"  \
-              -q ' poweroff?'
-
+              --yes-command "${SEATCTL} poweroff" \
+              -q 'Poweroff?'
     ;;
     "$B") exec "${HOME}/.scripts/rofi/promptmenu.sh" \
-              --yes-command "${SEATCTL} reboot"    \
-              --query '  reboot?'
+              --yes-command "${SEATCTL} reboot" \
+              --query ' Reboot?'
     ;;
-    "$C") betterlockscreen -l
+    "$C") exec "${HOME}/.scripts/rofi/promptmenu.sh" \
+              --yes-command "dm-tool switch-to-greeter" \
+              --query '  Lock?'
     ;;
-    "$D") if [[ "$("$MUSIC_CONTROLLER" status)" = *'laying'* ]]; then
-              "$MUSIC_CONTROLLER" toggle
-          fi
-          exec "$SEATCTL" suspend
+    "$D") exec "${HOME}/.scripts/rofi/promptmenu.sh" \
+              --yes-command "${SEATCTL} hybrid-sleep" \
+              --query ' Suspend?'
     ;;
-    "$E") exec "${HOME}/.scripts/rofi/promptmenu.sh"               \
-              --yes-command "pkill -KILL -u $(id -nu || whoami)" \
-              -q '  Logout?'
+    "$E") exec "${HOME}/.scripts/rofi/promptmenu.sh" \
+              --yes-command "${HOME}/.scripts/logout.sh" \
+              -q ' Logout?'
     ;;
 esac 
 
