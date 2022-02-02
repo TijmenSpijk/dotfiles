@@ -7,8 +7,6 @@ then
 	exit
 fi       
 
-
-
 status="$(mpc status | grep "playing")"
 
 ROFI="rofi -theme .scripts/Rofi/themes/four-horizontal.rasi"
