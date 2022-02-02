@@ -2,7 +2,7 @@
 
 $HOME/.config/polybar/launch-round.sh
 nitrogen --restore &
-redshift &
+# redshift &
 picom --experimental-backend &
 pgrep -x sxhkd > /dev/null || sxhkd &
 

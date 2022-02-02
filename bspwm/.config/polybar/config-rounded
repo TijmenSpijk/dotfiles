@@ -311,7 +311,7 @@ format-prefix = "  "
 format-prefix-foreground = ${colors.cyan}
 format-foreground = ${colors.foreground}
 format-background = ${colors.background-alt}
-click-left = ~/.scripts/htop.sh
+click-left = exec alacritty -e htop
 
 [module/powermenu]
 type = custom/text
