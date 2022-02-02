@@ -33,7 +33,7 @@ window {
 prompt {
     spacing: 						0;
     border: 						0;
-    text-color: 					@fg;
+    text-color: 					@white;
 }
 
 textbox-prompt-colon {
@@ -45,17 +45,17 @@ textbox-prompt-colon {
 
 entry {
     spacing:    					0;
-    text-color: 					@fg;
+    text-color: 					@white;
 }
 
 case-indicator {
     spacing:    					0;
-    text-color: 					@fg;
+    text-color: 					@white;
 }
 
 inputbar {
     spacing:    					0px;
-    text-color: 					@fg;
+    text-color: 					@white;
     padding:    					1px;
     children: 						[ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
@@ -169,5 +169,5 @@ message {
 }
 
 textbox {
-    text-color: 					@fg;
+    text-color: 					@white;
 }
