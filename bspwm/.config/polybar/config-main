@@ -33,20 +33,15 @@ cyan    = #88c0d0
 yellow  = #ebcb8b
 magenta = #b48ead
 
-[bar/mybar]
-modules-right = left uptime split updates kernel split backlight pulseaudio wireless-network cpu memory date battery powermenu right
+[bar/bar]
+modules-right = left uptime split updates kernel split backlight pulseaudio wireless-network wired-network cpu memory date battery powermenu right
 modules-center = 
 modules-left = left bspwm split window right
 
 width = 100%
 height = 34
-offset-x = 0%
-offset-y = 0%
-radius = 0.0
 line-size = 3
-fixed-center = false
-wm-restack = bspwm
-override-redirect = false
+monitor = eDP1
 
 foreground   = ${colors.foreground}
 background   = ${colors.background}
@@ -57,9 +52,9 @@ cursor-click = pointer
 cursor-scroll = default
 
 ; fonts
-font-0 = monospace:style=Bold:size=11;2
+font-0 = monospace:style=Bold:size=12;2
 font-1 = Feather:style=Bold:size=14;3
-font-2 = monospace:style=Bold:size=12;4
+font-2 = monospace:style=Bold:size=13;4
 font-3 = DaddyTimeMono Nerd Font:size=21;5
 
 #######################
@@ -68,6 +63,7 @@ font-3 = DaddyTimeMono Nerd Font:size=21;5
 
 [module/bspwm]
 type = internal/bspwm
+pin-workspaces = true
 
 label-focused = "%index%"
 label-focused-foreground = ${colors.white}
@@ -129,7 +125,7 @@ format-prefix = "%{T4}%{T-}"
 format-prefix-foreground = ${colors.blue}
 format-prefix-background = ${colors.background-alt}
 
-format-suffix = "%{T4}%{T-}"
+format-suffix = "%{T4}%{T-} "
 format-suffix-foreground = ${colors.blue}
 format-suffix-background = ${colors.background-alt}
 
@@ -168,7 +164,7 @@ label-connected-foreground = ${colors.foreground}
 label-connected-background = ${colors.background-alt}
 
 format-connected = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}<label-connected>%{A}"
-format-connected-prefix = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}  %{A}"
+format-connected-prefix = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}  %{A}"
 format-connected-prefix-foreground = ${colors.green}
 format-connected-prefix-background = ${colors.background-alt}
 
@@ -178,7 +174,7 @@ label-disconnected-foreground = ${colors.red}
 label-disconnected-background =  ${colors.background-alt}
 
 format-disconnected = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}<label-disconnected>%{A}"
-format-disconnected-prefix = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}  %{A}"
+format-disconnected-prefix = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:} %{A}"
 format-disconnected-prefix-foreground = ${colors.red}
 format-disconnected-prefix-background = ${colors.background-alt}
 
@@ -234,11 +230,11 @@ use-actual-brightness = true
 enable-scroll = true
 
 format = "<label>"
-format-prefix = "  "
+format-prefix = " "
 format-foreground = ${colors.yellow}
 format-background = ${colors.background-alt}
 
-label =  "%percentage%%"
+label =  "%percentage%% "
 label-foreground = ${colors.foreground}
 label-background = ${colors.background-alt}
 
@@ -249,7 +245,7 @@ full-at = 99
 ; $ ls -1 /sys/class/power_supply/
 battery = BAT0
 adapter = ADP1
-poll-interval = 5
+poll-interval = 1
 
 label-full = "  "
 label-full-background = ${colors.background-alt}
@@ -259,7 +255,7 @@ format-full-prefix = "%{T3}%{T-}"
 format-full-prefix-foreground = ${colors.green}
 format-full-prefix-background = ${colors.background-alt}
 
-label-charging = "%percentage%%  "
+label-charging = "%percentage%%"
 label-charging-background = ${colors.background-alt}
 label-charging-foreground = ${colors.foreground}
 
@@ -267,7 +263,7 @@ format-charging = " <label-charging>"
 format-charging-foreground = ${colors.green}
 format-charging-background = ${colors.background-alt}
 
-label-discharging = "%percentage%%  "
+label-discharging = "%percentage%%"
 label-discharging-background = ${colors.background-alt}
 label-discharging-foreground = ${colors.foreground}
 
@@ -275,11 +271,11 @@ format-discharging = "<ramp-capacity> <label-discharging>"
 format-discharging-foreground = ${colors.green}
 format-discharging-background = ${colors.background-alt}
 
-ramp-capacity-0 = "%{T3} %{T-}"
-ramp-capacity-1 = "%{T3} %{T-}"
-ramp-capacity-2 = "%{T3} %{T-}"
-ramp-capacity-3 = "%{T3} %{T-}"
-ramp-capacity-4 = "%{T3} %{T-}"
+ramp-capacity-0 = "%{F#bf616a}%{T3} %{T-}%{F-}"
+ramp-capacity-1 = "%{F#bf616a}%{T3} %{T-}%{F-}"
+ramp-capacity-2 = "%{F#ebcb8b}%{T3} %{T-}%{F-}"
+ramp-capacity-3 = "%{F#a3be8c}%{T3} %{T-}%{F-}"
+ramp-capacity-4 = "%{F#a3be8c}%{T3} %{T-}%{F-}"
 
 [module/uptime]
 type = custom/script
@@ -293,7 +289,7 @@ format-background = ${colors.background-alt}
 
 [module/updates]
 type = custom/script
-exec = checkupdates | wc -l
+exec = ~/.scripts/updates.sh
 interval = 60
 format = "<label>"
 format-prefix = " "

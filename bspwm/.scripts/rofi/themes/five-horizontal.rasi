@@ -10,7 +10,7 @@ window {
   location: north;
 
   width: 266px;
-  height: 60px;
+  height: 66px;
   x-offset: 823.5px;
   y-offset: 48px;
 

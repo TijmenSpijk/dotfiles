@@ -1,12 +1,13 @@
 #! /bin/sh
-
-$HOME/.config/polybar/launch-round.sh
+$HOME/.scripts/multimonitor.sh
 nitrogen --restore &
-# redshift &
 picom --experimental-backend &
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor -d 1 2 3 4 5 6
+bspc monitor eDP1 -d 1 2 3 4 5
+bspc monitor HDMI1 -d 1 2 3 4 5
+
+bspc monitor eDP1 -s HDMI1
 
 bspc config border_width         2
 bspc config window_gap           2
@@ -15,9 +16,3 @@ bspc config top_paddig          30
 bspc config split_ratio          0.5
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
-
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off

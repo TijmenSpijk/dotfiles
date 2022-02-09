@@ -14,24 +14,37 @@ super + Return
 super + {b,e}
 	{firefox,thunar}
 
+# launch code
+super + c
+	code
+
 super + shift + Escape
 	~/.scripts/rofi/powermenu.sh
 
 #
-# Volume Controle
+# Volume Control
 #
 
 # volume up
-ctrl + Up
+{ctrl + Up, XF86AudioRaiseVolume}
 	pamixer -u & pamixer -i 5
 
 # volume down
-ctrl + Down
+{ctrl + Down, XF86AudioLowerVolume}
 	pamixer -u & pamixer -d 5
 
 # toggle mute
-ctrl + m
+{ctrl + m, XF86AudioMute}
 	pamixer -t
+
+#
+# Brightness Control
+#
+XF86MonBrightnessDown
+	xbacklight - 1
+
+XF86MonBrightnessUp
+	xbacklight + 1
 
 #
 # Bspwm
@@ -82,57 +95,19 @@ super + ctrl + {m,x,y,z}
 #
 
 # focus/swap the node in the given direction
-super + {_,shift + }{h,j,k,l}
+super + {_,ctrl + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
-# super + {_,shift + }{Left,Down,Up,Right}
-# 	bspc node -{f,s} {west,south,north,east}
-
-# focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
-
-# focus the next/previous window in the current desktop
-super + {_,shift + }c
-	bspc node -f {next,prev}.local.!hidden.window
-
-# focus the next/previous desktop in the current monitor
-super + bracket{left,right}
-	bspc desktop -f {prev,next}.local
-
-# focus the last node/desktop
-super + {grave,Tab}
-	bspc {node,desktop} -f last
-
-# focus the older or newer node in the focus history
-super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
+super + {_,ctrl + }{Left,Down,Up,Right}
+	bspc node -{f,s} {west,south,north,east}
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc {desktop -f,node -d} focused:'^{1-9,10}'
 
-#
-# preselect
-#
-
-# preselect the direction
-super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
-
-# preselect the ratio
-super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
-
-# cancel the preselection for the focused node
-super + ctrl + space
-	bspc node -p cancel
-
-# cancel the preselection for the focused desktop
-super + ctrl + shift + space
-	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+# send node to the monitor in the given direction
+super + shift + {Left,Down,Up,Right}
+	bspc node -m {west,south,north,east} --follow
 
 #
 # move/resize
