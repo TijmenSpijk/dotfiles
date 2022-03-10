@@ -163,8 +163,8 @@ label-connected = "%ifname%"
 label-connected-foreground = ${colors.foreground}
 label-connected-background = ${colors.background-alt}
 
-format-connected = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}<label-connected>%{A}"
-format-connected-prefix = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}  %{A}"
+format-connected = "%{A1:exec alacritty -e nmtui:}<label-connected>%{A}"
+format-connected-prefix = "%{A1:exec alacritty -e nmtui:}  %{A}"
 format-connected-prefix-foreground = ${colors.green}
 format-connected-prefix-background = ${colors.background-alt}
 
@@ -173,8 +173,8 @@ label-disconnected =
 label-disconnected-foreground = ${colors.red}
 label-disconnected-background =  ${colors.background-alt}
 
-format-disconnected = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}<label-disconnected>%{A}"
-format-disconnected-prefix = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:} %{A}"
+format-disconnected = "%{A1:exec alacritty -e nmtui:}<label-disconnected>%{A}"
+format-disconnected-prefix = "%{A1:exec alacritty -e nmtui:} %{A}"
 format-disconnected-prefix-foreground = ${colors.red}
 format-disconnected-prefix-background = ${colors.background-alt}
 
@@ -188,8 +188,8 @@ label-connected = "%essid%"
 label-connected-foreground = ${colors.foreground}
 label-connected-background = ${colors.background-alt}
 
-format-connected = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}<label-connected>%{A}"
-format-connected-prefix = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}  %{A}"
+format-connected = "%{A1:exec alacritty -e nmtui:}<label-connected>%{A}"
+format-connected-prefix = "%{A1:exec alacritty -e nmtui:}  %{A}"
 format-connected-prefix-foreground = ${colors.green}
 format-connected-prefix-background = ${colors.background-alt}
 
@@ -198,8 +198,8 @@ label-disconnected =
 label-disconnected-foreground = ${colors.red}
 label-disconnected-background =  ${colors.background-alt}
 
-format-disconnected = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}<label-disconnected>%{A}"
-format-disconnected-prefix = "%{A1:$HOME/.scripts/rofi/rofi-network-manager/rofi-network-manager.sh:}  %{A}"
+format-disconnected = "%{A1:exec alacritty -e nmtui:}<label-disconnected>%{A}"
+format-disconnected-prefix = "%{A1:exec alacritty -e nmtui:}  %{A}"
 format-disconnected-prefix-foreground = ${colors.red}
 format-disconnected-prefix-background = ${colors.background-alt}
 
@@ -247,7 +247,7 @@ battery = BAT0
 adapter = ADP1
 poll-interval = 1
 
-label-full = "  "
+label-full = "%percentage%%"
 label-full-background = ${colors.background-alt}
 label-full-foreground = ${colors.foreground}
 
@@ -289,7 +289,9 @@ format-background = ${colors.background-alt}
 
 [module/updates]
 type = custom/script
-exec = ~/.scripts/updates.sh
+exec = checkupdates | wc -l
+exec-if = ping google.nl -c 1
+; ~/.scripts/updates.sh
 interval = 60
 format = "<label>"
 format-prefix = " "
@@ -325,3 +327,6 @@ format-prefix = " "
 format-prefix-foreground = ${colors.cyan}
 format-foreground = ${colors.foreground}
 format-background = ${colors.background-alt}
+
+[module/weather]
+type = 

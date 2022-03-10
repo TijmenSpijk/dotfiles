@@ -4,6 +4,10 @@ nitrogen --restore &
 picom --experimental-backend &
 pgrep -x sxhkd > /dev/null || sxhkd &
 
+# bspc subscribe monitor_add monitor_remove | while read -a msg ; do 
+#     bspc wm -r & pkill -USR1 -x sxhkd 
+# done
+
 bspc monitor eDP1 -d 1 2 3 4 5
 bspc monitor HDMI1 -d 1 2 3 4 5
 
