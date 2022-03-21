@@ -251,9 +251,9 @@ label-full = "%percentage%%"
 label-full-background = ${colors.background-alt}
 label-full-foreground = ${colors.foreground}
 
-format-full-prefix = "%{T3}%{T-}"
-format-full-prefix-foreground = ${colors.green}
-format-full-prefix-background = ${colors.background-alt}
+format-full = " <label-full>"
+format-full-foreground = ${colors.green}
+format-full-background = ${colors.background-alt}
 
 label-charging = "%percentage%%"
 label-charging-background = ${colors.background-alt}
