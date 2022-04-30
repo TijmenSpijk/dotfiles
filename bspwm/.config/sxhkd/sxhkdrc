@@ -18,8 +18,13 @@ super + {b,e}
 super + c
 	code
 
+# launch rofi-powermenu
 super + p
 	~/.scripts/rofi/powermenu.sh
+
+# launch flameshot
+Print
+    flameshot gui
 
 #
 # Volume Control
@@ -100,6 +105,10 @@ super + {_,ctrl + }{h,j,k,l}
 
 super + {_,ctrl + }{Left,Down,Up,Right}
 	bspc node -{f,s} {west,south,north,east}
+
+# focus or send to the give monitor
+alt + {_,shift +}{1-9,0}
+    bspc {monitor, node -d} '^{1-9,10}'
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
