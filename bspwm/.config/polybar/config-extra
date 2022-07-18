@@ -38,6 +38,9 @@ modules-right = left uptime split updates kernel split backlight pulseaudio wire
 modules-center = 
 modules-left = left bspwm split window right
 
+override-redirect = false
+wm-restack = bspwm
+
 width = 100%
 height = 34
 line-size = 3
@@ -136,20 +139,20 @@ label-background = ${colors.blue}
 [module/cpu]
 type = internal/cpu
 interval = 1
-format-prefix = "%{A1:alacritty -e htop:}%{T5}  %{T-}%{A}"
+format-prefix = "%{A1:alacritty -e btop:}%{T5}  %{T-}%{A}"
 format-prefix-foreground = ${colors.yellow}
 format-prefix-background = ${colors.background-alt}
-label = "%{A1:alacritty -e htop:}%percentage%%%{A}"
+label = "%{A1:alacritty -e btop:}%percentage%%%{A}"
 label-foreground = ${colors.foreground}
 label-background = ${colors.background-alt}
 
 [module/memory]
 type = internal/memory
 interval = 1
-format-prefix = "%{A1:alacritty -e htop:}%{T5}  %{T-}%{A}"
+format-prefix = "%{A1:alacritty -e btop:}%{T5}  %{T-}%{A}"
 format-prefix-foreground = ${colors.magenta}
 format-prefix-background = ${colors.background-alt}
-label = "%{A1:alacritty -e htop:}%gb_used% %{A}"
+label = "%{A1:alacritty -e btop:}%gb_used% %{A}"
 label-foreground = ${colors.foreground}
 label-background = ${colors.background-alt}
 
@@ -307,7 +310,7 @@ format-prefix = " "
 format-prefix-foreground = ${colors.cyan}
 format-foreground = ${colors.foreground}
 format-background = ${colors.background-alt}
-click-left = exec alacritty -e htop
+click-left = exec alacritty -e btop
 
 [module/powermenu]
 type = custom/text

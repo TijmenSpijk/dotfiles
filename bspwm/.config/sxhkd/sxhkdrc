@@ -108,11 +108,11 @@ super + {_,ctrl + }{Left,Down,Up,Right}
 
 # focus or send to the give monitor
 alt + {_,shift +}{1-9,0}
-    bspc {monitor, node -d} '^{1-9,10}'
+    bspc {monitor, node -d} '^{1-9,10}' --follow
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} focused:'^{1-9,10}'
+	bspc {desktop -f,node -d} focused:'^{1-9,10}' --follow
 
 # send node to the monitor in the given direction
 super + shift + {Left,Down,Up,Right}
