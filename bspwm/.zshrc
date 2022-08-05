@@ -5,11 +5,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -64,6 +64,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+ZLE_RPROMPT_INDENT=0
+
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # You can set one of the optional three formats:
@@ -110,8 +112,19 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias ls="exa -lG"
-alias lsa="exa -laG"
+alias ip='ip -c'
+alias ls=exa
+alias lsa='exa -Glah'
+alias tree='exa -T'
+alias top='btop'
+alias cat='bat --paging=never --theme Nord'
+alias connect-home='sudo openvpn --config ~/.ovpn/home.ovpn &'
+alias disconnect-home='sudo pkill -SIGTERM openvpn'
+alias mount-home='sudo mount 192.168.1.7:/media/share /media/share'
+alias unmount-home='sudo umount /media/share'
+alias connect-headphone='sudo bluetoothctl power on && sudo bluetoothctl connect 12:23:19:28:51:A6'
+alias disconnect-headphone='sudo bluetoothctl disconnect 12:23:19:28:51:A6 && sudo bluetoothctl power off'
+alias ssh-keygen='ssh-keygen -t ecdsa -b 521'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
