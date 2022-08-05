@@ -128,3 +128,5 @@ alias ssh-keygen='ssh-keygen -t ecdsa -b 521'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+eval $(thefuck --alias)
