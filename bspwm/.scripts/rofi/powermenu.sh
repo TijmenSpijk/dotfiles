@@ -11,7 +11,7 @@ fi
 
 ROFI="rofi -theme $HOME/.scripts/rofi/themes/five-horizontal.rasi"
 
-A='' B='' C='' D='' E=''
+A='' B='' C='' D='' E=''
 
 MENU="$(printf "${A}\n${B}\n${C}\n${D}\n${E}\n" | ${ROFI} -dmenu -selected-row 2)"
 
