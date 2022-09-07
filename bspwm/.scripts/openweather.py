@@ -71,7 +71,7 @@ def wind_deg_to_dir(deg):
         return ''
 
 city_name = "Leiden"
-api_key = "f698b5de66c98178fcbe0335dac74445"
+api_key = ""
 api_url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={api_key}&units=metric"
 
 responds = requests.get(api_url)
