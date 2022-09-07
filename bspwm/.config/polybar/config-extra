@@ -43,8 +43,8 @@ wm-restack = bspwm
 
 width = 100%
 height = 34
-line-size = 1
-monitor = eDP1
+line-size = 3
+monitor = HDMI1
 
 foreground   = ${colors.foreground}
 background   = ${colors.background}
@@ -275,9 +275,10 @@ format-discharging-foreground = ${colors.green}
 format-discharging-background = ${colors.background-alt}
 
 ramp-capacity-0 = "%{F#bf616a}%{T3} %{T-}%{F-}"
-ramp-capacity-1 = "%{F#bf616a}%{T3} %{T-}%{F-}"
-ramp-capacity-2 = "%{F#ebcb8b}%{T3} %{T-}%{F-}"
-ramp-capacity-3 = "%{F#a3be8c}%{T3} %{T-}%{F-}"
+ramp-capacity-1 = "%{F#bf616a}%{T3} {T-}%{F-}"
+ramp-capacity-2 = "%{F#ebcb8b}%{T3} %{T-}%{F-}"
+ramp-capacity-3 = "%{F#ebcb8b}%{T3} %{T-}%{F-}"
+ramp-capacity-4 = "%{F#a3be8c}%{T3} %{T-}%{F-}"
 
 [module/uptime]
 type = custom/script
@@ -288,12 +289,12 @@ format-prefix = " "
 format-prefix-foreground = ${colors.magenta}
 format-foreground = ${colors.foreground}
 format-background = ${colors.background-alt}
+click-left = exec alacritty -e btop
 
 [module/updates]
 type = custom/script
 exec = checkupdates | wc -l
 exec-if = ping google.nl -c 1
-; ~/.scripts/updates.sh
 interval = 60
 format = "<label>"
 format-prefix = " "
@@ -326,6 +327,16 @@ exec = sh ~/.scripts/title.sh
 interval = 1
 format = "<label>"
 format-prefix = " "
+format-prefix-foreground = ${colors.cyan}
+format-foreground = ${colors.foreground}
+format-background = ${colors.background-alt}
+
+[module/weather]
+type = custom/script
+exec = 
+interval = 1
+format = "<label>"
+format-prefix = "31* -> 32*"
 format-prefix-foreground = ${colors.cyan}
 format-foreground = ${colors.foreground}
 format-background = ${colors.background-alt}
