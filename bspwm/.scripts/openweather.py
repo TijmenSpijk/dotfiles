@@ -1,6 +1,7 @@
 import os
 import requests
 from datetime import datetime
+from dotenv import load_dotenv
 
 def get_icon(id: str):
     match id:
@@ -70,8 +71,10 @@ def wind_deg_to_dir(deg):
     elif (337.5 < deg and deg <= 360):
         return ''
 
+load_dotenv()
+
 city_name = "Leiden"
-api_key = ""
+api_key = os.getenv('API_KEY')
 api_url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={api_key}&units=metric"
 
 responds = requests.get(api_url)
