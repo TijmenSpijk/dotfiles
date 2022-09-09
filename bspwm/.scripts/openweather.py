@@ -130,7 +130,7 @@ else:
     id_forecast = weather_forecast['icon']
     icon_forecast = get_icon(id_forecast)
 
-    output = f"{icon_current} {temp_current}°C {wind_icon} {wind_current} | {icon_forecast} {temp_forecast}°C {wind_icon} {wind_forecast}"
+    output = f"{icon_current} {temp_current}°C {wind_icon} {wind_current}  {icon_forecast} {temp_forecast}°C {wind_icon} {wind_forecast}"
 
     print(output)
     print(responds_forecast.json())
