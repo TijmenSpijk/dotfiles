@@ -53,23 +53,23 @@ def get_icon(id: str):
 
 def wind_deg_to_dir(deg):
     if (0 < deg and deg <= 22.5):
-        return ''
+        return "%{F#88c0d0}%{F-}"
     elif (22.5 < deg and deg <= 67.5):
-        return ''
+        return "%{F#88c0d0}%{F-}"
     elif (67.5 < deg and deg <= 112.5):
-        return ''
+        return "%{F#88c0d0}%{F-}"
     elif (112.5 < deg and deg <= 157.5):
-        return ''
+        return "%{F#88c0d0}%{F-}"
     elif (157.5 < deg and deg <= 202.5):
-        return ''
+        return "%{F#88c0d0}%{F-}"
     elif (202.5 < deg and deg <= 247.5):
-        return ''
+        return "%{F#88c0d0}%{F-}"
     elif (247.5 < deg and deg <= 292.5):
-        return ''
+        return "%{F#88c0d0}%{F-}"
     elif (292.5 < deg and deg <= 337.5):
-        return ''
+        return "%{F#88c0d0}%{F-}"
     elif (337.5 < deg and deg <= 360):
-        return ''
+        return "%{F#88c0d0}%{F-}"
 
 load_dotenv()
 
