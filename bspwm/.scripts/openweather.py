@@ -91,7 +91,7 @@ else:
     content_forecast = responds_forecast.json()['list'][1]
 
     main_current = content_current['main']
-    temp_current = main_current['temp']
+    temp_current = round(main_current['temp'])
 
     wind_current = content_current['wind']
     wind_speed_current = wind_current['speed']
@@ -116,7 +116,7 @@ else:
     icon_current = get_icon(id_current)
     
     main_forecast = content_forecast['main']
-    temp_forecast = main_forecast['temp']
+    temp_forecast = round(main_forecast['temp'])
 
     wind_forecast = content_forecast['wind']
     wind_speed_forecast = wind_forecast['speed']
