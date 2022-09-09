@@ -75,40 +75,61 @@ load_dotenv()
 
 city_name = "Leiden"
 api_key = os.getenv('API_KEY')
-api_url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={api_key}&units=metric"
+api_url_current = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={api_key}&units=metric"
+api_url_forecast = f"https://api.openweathermap.org/data/2.5/forecast?q={city_name}&appid={api_key}&units=metric&cnt=2"
 
-responds = requests.get(api_url)
+responds_current = requests.get(api_url_current)
+responds_forecast = requests.get(api_url_forecast)
 
-if (responds.status_code != 200) :
-    print(responds.status_code)
+if (responds_current.status_code != 200) :
+    print("Weather => ", responds_current.status_code)
+elif (responds_forecast.status_code != 200):
+    print("Forecast => ", responds_forecast.status_code)
 else:
-    content = responds.json()
+    # CURRENT DATA #
+    content_current = responds_current.json()
+    content_forecast = responds_forecast.json()['list'][1]
 
-    main = content['main']
-    temp = main['temp']
+    main_current = content_current['main']
+    temp_current = main_current['temp']
 
-    wind = content['wind']
-    wind_speed = wind['speed']
-    wind_deg = wind['deg']
-    wind_dir = wind_deg_to_dir(wind_deg)
+    wind_current = content_current['wind']
+    wind_speed_current = wind_current['speed']
+    wind_deg_current = wind_current['deg']
+    wind_dir_current = wind_deg_to_dir(wind_deg_current)
 
-    sys = content['sys']
+    wind_icon = "%{F#88c0d0}%{F-}"
+    wind_current = f"{wind_speed_current} m/s {wind_dir_current}"
+
+    sys = content_current['sys']
     sunrise_icon = "%{F#d08770}%{F-}"
     sunrise = datetime.fromtimestamp(int(sys['sunrise'])).strftime("%H:%M")
     sunset_icon = "%{F#d08770}%{F-}"
     sunset = datetime.fromtimestamp(int(sys['sunset'])).strftime("%H:%M")
     
-    weather = content['weather'][0]
-    id = weather['icon']
-    icon = get_icon(id)
+    _ = f"{sunrise_icon} {sunrise} {sunset_icon} {sunset}"
+    
+    # FORECAST DATA #
 
-    wind_icon = "%{F#5e81ac}%{F-}"
-    wind = f"{wind_speed} m/s {wind_dir}"
+    weather_current = content_current['weather'][0]
+    id_current = weather_current['icon']
+    icon_current = get_icon(id_current)
+    
+    main_forecast = content_forecast['main']
+    temp_forecast = main_forecast['temp']
 
-    output = f"{icon} {temp}°C {wind_icon} {wind} {sunrise_icon} {sunrise} {sunset_icon} {sunset}"
+    wind_forecast = content_forecast['wind']
+    wind_speed_forecast = wind_forecast['speed']
+    wind_deg_forecast = wind_forecast['deg']
+    wind_dir_forecast = wind_deg_to_dir(wind_deg_forecast)
 
-    os.environ['WIND'] = wind
+    wind_icon = "%{F#88c0d0}%{F-}"
+    wind_forecast = f"{wind_speed_forecast} m/s {wind_dir_forecast}"
+
+    weather_forecast = content_forecast['weather'][0]
+    id_forecast = weather_forecast['icon']
+    icon_forecast = get_icon(id_forecast)
+
+    output = f"{icon_current} {temp_current}°C {wind_icon} {wind_current} | {icon_forecast} {temp_forecast}°C {wind_icon} {wind_forecast}"
 
     print(output)
-
-    print(content)

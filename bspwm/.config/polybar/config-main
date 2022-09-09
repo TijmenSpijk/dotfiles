@@ -334,6 +334,7 @@ format-background = ${colors.background-alt}
 [module/weather]
 type = custom/script
 exec = exec python ~/.scripts/openweather.py
+exec-if = ping google.nl -c 1
 interval = 60
 format = "<label>"
 format-foreground = ${colors.foreground}
