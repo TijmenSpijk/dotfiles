@@ -94,7 +94,7 @@ else:
     temp_current = round(main_current['temp'])
 
     wind_current = content_current['wind']
-    wind_speed_current = wind_current['speed']
+    wind_speed_current = round(wind_current['speed'])
     wind_deg_current = wind_current['deg']
     wind_dir_current = wind_deg_to_dir(wind_deg_current)
 
@@ -119,7 +119,7 @@ else:
     temp_forecast = round(main_forecast['temp'])
 
     wind_forecast = content_forecast['wind']
-    wind_speed_forecast = wind_forecast['speed']
+    wind_speed_forecast = round(wind_forecast['speed'])
     wind_deg_forecast = wind_forecast['deg']
     wind_dir_forecast = wind_deg_to_dir(wind_deg_forecast)
 
@@ -133,3 +133,4 @@ else:
     output = f"{icon_current} {temp_current}°C {wind_icon} {wind_current} | {icon_forecast} {temp_forecast}°C {wind_icon} {wind_forecast}"
 
     print(output)
+    print(responds_forecast.json())
