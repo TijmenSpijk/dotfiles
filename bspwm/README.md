@@ -21,5 +21,10 @@ This is heavily inspired on https://www.reddit.com/r/unixporn/comments/s7559w/bs
 - Rofi
 - Vim
 
+# Fonts
+- monospace
+- Font Awesome 6
+- DaddyTimeMono Nerd Font
+
 # Scripts
 Many of the scripts are written by others and changed to my liking
