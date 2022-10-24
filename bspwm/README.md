@@ -2,7 +2,7 @@
 This is my own minimal build of Arch using EndeavourOS as a base. Bspwm is the window manager and Polybar is the top bar.
 This is heavily inspired on https://www.reddit.com/r/unixporn/comments/s7559w/bspwm_rice/ 
 
-# Dependencies
+# Packages
 - Alacritty
 - Bspwm
 - Dunst
