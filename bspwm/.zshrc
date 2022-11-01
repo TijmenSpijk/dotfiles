@@ -130,3 +130,5 @@ alias ssh-keygen='ssh-keygen -t ecdsa -b 521'
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 eval $(thefuck --alias)
+eval $(starship init zsh)
+

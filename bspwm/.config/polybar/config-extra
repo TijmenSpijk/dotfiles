@@ -35,7 +35,7 @@ blue    = #5e81ac
 magenta = #b48ead
 
 [bar/bar]
-modules-right = left uptime split kernel split backlight pulseaudio wireless-network wired-network cpu memory date battery powermenu right
+modules-right = left uptime split split backlight pulseaudio wireless-network wired-network cpu memory date battery powermenu right
 modules-center = 
 modules-left = left bspwm split window split weather right
 
