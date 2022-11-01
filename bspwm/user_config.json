@@ -1,0 +1,89 @@
+{
+    "audio": "pipewire",
+    "bootloader": "grub-install",
+    "config_version": "2.5.1",
+    "debug": false,
+    "gfx_driver": "All open-source (default)",
+    "harddrives": [
+        "/dev/sda"
+    ],
+    "kernels": [
+        "linux"
+    ],
+    "mirror-region": {
+        "Netherlands": {
+            "http://arch.mirrors.lavatech.top/$repo/os/$arch": true,
+            "http://archlinux.mirror.liteserver.nl/$repo/os/$arch": true,
+            "http://archlinux.mirror.pcextreme.nl/$repo/os/$arch": true,
+            "http://archlinux.mirror.wearetriple.com/$repo/os/$arch": true,
+            "http://ftp.nluug.nl/os/Linux/distr/archlinux/$repo/os/$arch": true,
+            "http://ftp.snt.utwente.nl/pub/os/linux/archlinux/$repo/os/$arch": true,
+            "http://mirror.ams1.nl.leaseweb.net/archlinux/$repo/os/$arch": true,
+            "http://mirror.cj2.nl/archlinux/$repo/os/$arch": true,
+            "http://mirror.koddos.net/archlinux/$repo/os/$arch": true,
+            "http://mirror.lyrahosting.com/archlinux/$repo/os/$arch": true,
+            "http://mirror.mijn.host/archlinux/$repo/os/$arch": true,
+            "http://mirror.serverion.com/archlinux/$repo/os/$arch": true,
+            "http://mirrors.evoluso.com/archlinux/$repo/os/$arch": true,
+            "http://mirrors.xtom.nl/archlinux/$repo/os/$arch": true,
+            "https://arch.mirrors.lavatech.top/$repo/os/$arch": true,
+            "https://archlinux.mirror.liteserver.nl/$repo/os/$arch": true,
+            "https://archlinux.mirror.pcextreme.nl/$repo/os/$arch": true,
+            "https://archlinux.mirror.wearetriple.com/$repo/os/$arch": true,
+            "https://mirror.ams1.nl.leaseweb.net/archlinux/$repo/os/$arch": true,
+            "https://mirror.cj2.nl/archlinux/$repo/os/$arch": true,
+            "https://mirror.koddos.net/archlinux/$repo/os/$arch": true,
+            "https://mirror.lyrahosting.com/archlinux/$repo/os/$arch": true,
+            "https://mirror.mijn.host/archlinux/$repo/os/$arch": true,
+            "https://mirror.serverion.com/archlinux/$repo/os/$arch": true,
+            "https://mirrors.xtom.nl/archlinux/$repo/os/$arch": true
+        }
+    },
+    "nic": {
+        "dhcp": true,
+        "dns": null,
+        "gateway": null,
+        "iface": null,
+        "ip": null,
+        "type": "nm"
+    },
+    "no_pkg_lookups": false,
+    "offline": false,
+    "packages": [
+        "alacritty",
+        "arandr",
+        "bat",
+        "bspwm",
+        "btop",
+        "dunst",
+        "exa",
+        "flameshot",
+        "firefox",
+        "git",
+        "lightdm",
+        "lightdm-gtk-greeter",
+        "lxappearance",
+        "lxsession",
+        "nitrogen",
+        "os-prober",
+        "polybar",
+        "sxhkd",
+        "ranger",
+        "redshift",
+        "rofi",
+        "thunar",
+        "vim",
+        "xdg-utils",
+        "xdg-user-dirs",
+        "xdotool",
+        "zsh"
+    ],
+    "profile": {
+        "path": "/usr/lib/python3.10/site-packages/archinstall/profiles/xorg.py"
+    },
+    "script": "guided",
+    "silent": false,
+    "swap": false,
+    "timezone": "Europe/Amsterdam",
+    "version": "2.5.1"
+}
